@@ -20,7 +20,7 @@ M.config = M.defaults
 M.colors = {
     ---@type lucid.Colors
     dark = {
-        -- H: 252.8; S: 17.3; L: 7.4
+        -- H: 252.8; S: 17.3; L: 7.2
         bg = "#14161b",
         -- H: 261.6; S: 54.5; L: 94.6
         fg = "#eeeff8",
@@ -36,7 +36,22 @@ M.colors = {
         blue = "#77b1dd",
     },
     ---@type lucid.Colors
-    light = {},
+    light = {
+        -- H: 0; S: 0; L: 98.6
+        bg = "#fbfbfb",
+        -- H: 252.8; S: 17.3; L: 7.2
+        fg = "#14161b",
+        -- H: 192.2; S: 8.1; L: 45.4
+        gray = "#676c6c",
+        -- H: 11.4; S: 58.4; L: 40
+        red = "#a33b3f",
+        -- H: 134.9; S: 50.5; L: 40
+        green = "#406749",
+        -- H: 56.0; S: 58.8; L: 46.6
+        yellow = "#846b45",
+        -- H: 237.8; S: 59.2; L: 40
+        blue = "#40627c",
+    },
 }
 
 ---@param opts? lucid.Config
