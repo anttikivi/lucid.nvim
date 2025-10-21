@@ -159,6 +159,38 @@ function M.groups(c, opts)
         WarningMsg = { fg = c.yellow },
         WinBar = { bold = true },
         WinBarNC = { italic = true },
+
+        -- Syntax
+        Constant = { fg = c.blue },
+        Operator = { fg = c.fg_light },
+        PreProc = { fg = c.fg_light },
+        Type = { fg = c.blue },
+        Delimiter = { fg = c.gray },
+
+        Comment = { fg = c.gray, italic = true },
+        String = { fg = c.green },
+        Identifier = { fg = c.fg },
+        Function = { fg = c.fg },
+        Statement = { fg = c.fg },
+        Special = { fg = c.gray },
+        Error = { fg = c.gray, bg = c.red },
+        Todo = { fg = c.gray, bold = true },
+
+        -- Diagnostic
+        DiagnosticError = { fg = c.red },
+        DiagnosticWarn = { fg = c.yellow },
+        DiagnosticInfo = { fg = c.blue },
+        DiagnosticHint = { fg = c.blue },
+        DiagnosticOk = { fg = c.green },
+        DiagnosticUnderlineError = { sp = c.red, undercurl = true },
+        DiagnosticUnderlineWarn = { sp = c.yellow, undercurl = true },
+        DiagnosticUnderlineInfo = { sp = c.blue, undercurl = true },
+        DiagnosticUnderlineHint = { sp = c.blue, undercurl = true },
+        DiagnosticUnderlineOk = { sp = c.green, undercurl = true },
+        DiagnosticDeprecated = { fg = c.gray, strikethrough = true },
+
+        -- Treesitter standard groups
+        ["@variable"] = { fg = c.fg },
     }
 end
 
