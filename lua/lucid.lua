@@ -10,7 +10,9 @@ M.config = M.defaults
 
 ---@class lucid.Colors
 ---@field bg string
+---@field bg_light string
 ---@field fg string
+---@field fg_light string
 ---@field gray string
 ---@field red string
 ---@field green string
@@ -22,8 +24,12 @@ M.colors = {
     dark = {
         -- H: 252.8; S: 17.3; L: 7.2
         bg = "#14161b",
+        -- H: 252.8; S: 17.3; L: 14.6
+        bg_light = "#22252c",
         -- H: 261.6; S: 54.5; L: 94.6
         fg = "#eeeff8",
+        -- H: 261.6; S: 54.5; L: 81.2
+        fg_light = "#c4c8e7",
         -- H: 192.2; S: 4.2; L: 68.6
         gray = "#a4a8a8",
         -- H: 11.4; S: 58.4; L: 67
@@ -39,8 +45,12 @@ M.colors = {
     light = {
         -- H: 0; S: 0; L: 98.6
         bg = "#fbfbfb",
+        -- H: 0; S: 0; L: 94
+        bg_light = "#eeeeee",
         -- H: 252.8; S: 17.3; L: 7.2
         fg = "#14161b",
+        -- H: 252.8; S: 17.3; L: 15.0
+        fg_light = "#23262d",
         -- H: 192.2; S: 8.1; L: 45.4
         gray = "#676c6c",
         -- H: 11.4; S: 58.4; L: 40
@@ -54,6 +64,8 @@ M.colors = {
     },
 }
 
+local did_setup = false
+
 ---@param opts? lucid.Config
 ---@return lucid.Config
 function M.extend(opts)
@@ -63,12 +75,91 @@ end
 ---@param opts? lucid.Config
 function M.setup(opts)
     M.config = vim.tbl_deep_extend("force", {}, M.defaults, opts or {})
+    did_setup = true
 end
 
 ---@param opts? lucid.Config
 function M.load(opts)
+    if not did_setup then
+        M.setup()
+        did_setup = true
+    end
+
     opts = M.extend(opts)
-    local bg = vim.o.background
+    local colors = M.colors[vim.o.background]
+    local groups = M.groups(colors, opts)
+
+    -- Clear highlights when using another color scheme.
+    if vim.g.colors_name then
+        vim.cmd("hi clear")
+    end
+
+    for group, hl in pairs(groups) do
+        hl = type(hl) == "string" and { link = hl } or hl --[[@as vim.api.keyset.highlight]]
+        vim.api.nvim_set_hl(0, group, hl)
+    end
+end
+
+---@param c lucid.Colors
+---@param opts lucid.Config
+---@return table<string, vim.api.keyset.highlight | string>
+function M.groups(c, opts)
+    local none = "NONE"
+
+    -- Default highlight groups:
+    -- https://github.com/neovim/neovim/blob/master/src/nvim/highlight_group.c
+
+    ---@type table<string, vim.api.keyset.highlight | string>
+    return {
+        Normal = { fg = c.fg, bg = opts.transparent and none or c.bg },
+
+        -- UI
+        Added = { fg = c.green },
+        Changed = { fg = c.blue },
+        ColorColumn = { bg = c.bg_light },
+        Conceal = { fg = c.bg_light },
+        CurSearch = { fg = c.bg, bg = c.yellow },
+        CursorColumn = { bg = c.bg_light },
+        CursorLine = { bg = c.bg_light },
+        DiffAdd = { fg = c.fg_light, bg = c.green },
+        DiffChange = { fg = c.fg_light, bg = c.blue },
+        DiffDelete = { fg = c.red },
+        DiffText = { fg = c.fg_light, bg = c.blue },
+        Directory = { fg = c.fg },
+        ErrorMsg = { fg = c.red },
+        FloatShadow = { bg = c.bg_light, blend = 80 },
+        FloatShadowThrough = { bg = c.bg_light, blend = 100 },
+        Folded = { fg = c.fg_light, bg = c.bg_light },
+        LineNr = { fg = c.gray },
+        MatchParen = { bg = c.bg_light, bold = true },
+        ModeMsg = { fg = c.green },
+        MoreMsg = { fg = c.blue },
+        NonText = { fg = c.fg_light },
+        NormalFloat = { bg = c.bg_light },
+        OkMsg = { fg = c.green },
+        Pmenu = { bg = c.bg_light },
+        PmenuThumb = { bg = c.gray },
+        Question = { bg = c.blue },
+        QuickFixLine = { bg = c.blue },
+        RedrawDebugClear = { bg = c.yellow },
+        RedrawDebugComposed = { bg = c.green },
+        RedrawDebugRecompose = { bg = c.red },
+        Removed = { fg = c.red },
+        Search = { fg = c.bg, bg = c.yellow },
+        SignColumn = { fg = c.gray, bg = opts.transparent and none or c.bg },
+        SpecialKey = { fg = c.gray },
+        SpellBad = { sp = c.red, undercurl = true },
+        SpellCap = { sp = c.yellow, undercurl = true },
+        SpellLocal = { sp = c.green, undercurl = true },
+        SpellRare = { sp = c.blue, undercurl = true },
+        StatusLine = { bg = c.bg_light },
+        StatusLineNC = { bg = c.bg, italic = true },
+        Title = { fg = c.gray, bold = true },
+        Visual = { bg = c.bg_light },
+        WarningMsg = { fg = c.yellow },
+        WinBar = { bold = true },
+        WinBarNC = { italic = true },
+    }
 end
 
 return M

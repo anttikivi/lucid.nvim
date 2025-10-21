@@ -1,1 +1,1 @@
-lua require("lucid").load({})
+lua require("lucid").load()
