@@ -94,6 +94,8 @@ function M.load(opts)
         vim.cmd("hi clear")
     end
 
+    vim.g.colors_name = "lucid"
+
     for group, hl in pairs(groups) do
         hl = type(hl) == "string" and { link = hl } or hl --[[@as vim.api.keyset.highlight]]
         vim.api.nvim_set_hl(0, group, hl)
@@ -114,6 +116,17 @@ function M.groups(c, opts)
         Normal = { fg = c.fg, bg = opts.transparent and none or c.bg },
 
         -- UI
+        Cursor = { fg = c.bg, bg = c.fg },
+        CursorLineNr = { bold = true },
+        PmenuMatch = { bold = true },
+        PmenuMatchSel = { bold = true },
+        PmenuSel = { reverse = true },
+        RedrawDebugNormal = { reverse = true },
+        TabLineSel = { bold = true },
+        TermCursor = { reverse = true },
+        Underlined = { underline = true },
+        lCursor = { fg = c.bg, bg = c.fg },
+
         Added = { fg = c.green },
         Changed = { fg = c.blue },
         ColorColumn = { bg = c.bg_light },
@@ -159,6 +172,46 @@ function M.groups(c, opts)
         WarningMsg = { fg = c.yellow },
         WinBar = { bold = true },
         WinBarNC = { italic = true },
+
+        CursorIM = "Cursor",
+        CursorLineFold = "FoldColumn",
+        CursorLineSign = "SignColumn",
+        DiffTextAdd = "DiffText",
+        EndOfBuffer = "NonText",
+        FloatBorder = "NormalFloat",
+        FloatFooter = "FloatTitle",
+        FloatTitle = "Title",
+        FoldColumn = "SignColumn",
+        IncSearch = "CurSearch",
+        LineNrAbove = "LineNr",
+        LineNrBelow = "LineNr",
+        MsgSeparator = "StatusLine",
+        MsgArea = none,
+        NormalNC = none,
+        PmenuExtra = "Pmenu",
+        PmenuExtraSel = "PmenuSel",
+        PmenuKind = "Pmenu",
+        PmenuKindSel = "PmenuSel",
+        PmenuSbar = "Pmenu",
+        PmenuBorder = "Pmenu",
+        PmenuShadow = "FloatShadow",
+        PmenuShadowThrough = "FloatShadowThrough",
+        PreInsert = "Added",
+        ComplMatchIns = none,
+        ComplHint = "NonText",
+        ComplHintMore = "MoreMsg",
+        Substitute = "Search",
+        StatusLineTerm = "StatusLine",
+        StatusLineTermNC = "StatusLineNC",
+        StderrMsg = "ErrorMsg",
+        StdoutMsg = none,
+        TabLine = "StatusLineNC",
+        TabLineFill = "TabLine",
+        VertSplit = "WinSeparator",
+        VisualNOS = "Visual",
+        Whitespace = "NonText",
+        WildMenu = "PmenuSel",
+        WinSeparator = "Normal",
 
         -- Syntax
         Constant = { fg = c.blue },
