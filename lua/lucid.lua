@@ -310,6 +310,100 @@ function M.groups(c, opts)
 
         -- Treesitter standard groups
         ["@variable"] = { fg = c.fg },
+
+        ["@variable.builtin"] = "Special",
+        ["@variable.parameter.builtin"] = "Special",
+
+        ["@constant"] = "Constant",
+        ["@constant.builtin"] = "Special",
+
+        ["@module"] = "Structure",
+        ["@module.builtin"] = "Special",
+        ["@label"] = "Label",
+
+        ["@string"] = "String",
+        ["@string.regexp"] = "@string.special",
+        ["@string.escape"] = "@string.special",
+        ["@string.special"] = "SpecialChar",
+        ["@string.special.url"] = "Underlined",
+
+        ["@character"] = "Character",
+        ["@character.special"] = "SpecialChar",
+
+        ["@boolean"] = "Boolean",
+        ["@number"] = "Number",
+        ["@number.float"] = "Float",
+
+        ["@type"] = "Type",
+        ["@type.builtin"] = "Special",
+
+        ["@attribute"] = "Macro",
+        ["@attribute.builtin"] = "Special",
+        ["@property"] = "Identifier",
+
+        ["@function"] = "Function",
+        ["@function.builtin"] = "Special",
+
+        ["@constructor"] = "Special",
+        ["@operator"] = "Operator",
+
+        ["@keyword"] = "Keyword",
+
+        ["@punctuation"] = "Delimiter",
+        ["@punctuation.special"] = "Special",
+
+        ["@comment"] = "Comment",
+
+        ["@comment.error"] = "DiagnosticError",
+        ["@comment.warning"] = "DiagnosticWarn",
+        ["@comment.note"] = "DiagnosticInfo",
+        ["@comment.todo"] = "Todo",
+
+        ["@markup.strong"] = { bold = true },
+        ["@markup.italic"] = { italic = true },
+        ["@markup.strikethrough"] = { strikethrough = true },
+        ["@markup.underline"] = { underline = true },
+
+        ["@markup"] = "Special",
+        ["@markup.heading"] = "Title",
+        ["@markup.link"] = "Underlined",
+
+        ["@diff.plus"] = "Added",
+        ["@diff.minus"] = "Removed",
+        ["@diff.delta"] = "Changed",
+
+        ["@tag"] = "Tag",
+        ["@tag.builtin"] = "Special",
+
+        -- "default @markup.heading.1.delimiter.vimdoc guibg=bg guifg=bg guisp=fg gui=underdouble,nocombine ctermbg=NONE ctermfg=NONE cterm=underdouble,nocombine",
+        -- "default @markup.heading.2.delimiter.vimdoc guibg=bg guifg=bg guisp=fg gui=underline,nocombine ctermbg=NONE ctermfg=NONE cterm=underline,nocombine",
+
+        -- LSP semantic tokens
+        ["@lsp.type.class"] = "@type",
+        ["@lsp.type.comment"] = "@comment",
+        ["@lsp.type.decorator"] = "@attribute",
+        ["@lsp.type.enum"] = "@type",
+        ["@lsp.type.enumMember"] = "@constant",
+        ["@lsp.type.event"] = "@type",
+        ["@lsp.type.function"] = "@function",
+        ["@lsp.type.interface"] = "@type",
+        ["@lsp.type.keyword"] = "@keyword",
+        ["@lsp.type.macro"] = "@constant.macro",
+        ["@lsp.type.method"] = "@function.method",
+        ["@lsp.type.modifier"] = "@type.qualifier",
+        ["@lsp.type.namespace"] = "@module",
+        ["@lsp.type.number"] = "@number",
+        ["@lsp.type.operator"] = "@operator",
+        ["@lsp.type.parameter"] = "@variable.parameter",
+        ["@lsp.type.property"] = "@property",
+        ["@lsp.type.regexp"] = "@string.regexp",
+        ["@lsp.type.string"] = "@string",
+        ["@lsp.type.struct"] = "@type",
+        ["@lsp.type.type"] = "@type",
+        ["@lsp.type.typeParameter"] = "@type.definition",
+        ["@lsp.type.variable"] = "@variable",
+
+        ["@lsp.mod.deprecated"] = "DiagnosticDeprecated",
     }
 end
 
