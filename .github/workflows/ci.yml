@@ -22,7 +22,13 @@ jobs:
             ~/.cargo/git/db/
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-      - run: cargo install selene stylua
+      - run: |
+          if ! command -v selene &> /dev/null; then
+            cargo install selene
+          fi
+          if ! command -v stylua &> /dev/null; then
+            cargo install stylua
+          fi
       - run: selene lua generate.lua palette.lua
       - run: stylua --check .
       - run: |
