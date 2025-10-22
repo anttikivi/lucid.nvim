@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5.0.0
+      - uses: leafo/gh-actions-lua@v12.0.0
+      - run: cargo install selene stylua
+      - run: selene .
+      - run: stylua --check .
+      - run: |
+          lua generate.lua
+          if ! git diff --exit-code; then
+            echo "Generated files are out of date!"
+            echo "Run \"lua generate.lua\" locally and commit the changes."
+            git diff
+            exit 1
+          fi
