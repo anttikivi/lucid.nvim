@@ -34,6 +34,13 @@ local function isdir(path)
 end
 
 local function main()
+    ---@type string[]
+    local keys = {}
+    for k in pairs(palette.dark) do
+        table.insert(keys, k)
+    end
+    table.sort(keys)
+
     local output = {
         "-- This file is generated using generate-colors.lua. Do not edit manually.",
         "",
@@ -42,7 +49,8 @@ local function main()
         "    dark = {",
     }
 
-    for k, v in pairs(palette.dark) do
+    for _, k in ipairs(keys) do
+        local v = palette.dark[k]
         table.insert(output, string.format('%s%s = "%s",', string.rep(" ", indent * 2), k, convert(v)))
     end
 
@@ -50,7 +58,8 @@ local function main()
     table.insert(output, "    ---@type lucid.Colors")
     table.insert(output, "    light = {")
 
-    for k, v in pairs(palette.light) do
+    for _, k in ipairs(keys) do
+        local v = palette.light[k]
         table.insert(output, string.format('%s%s = "%s",', string.rep(" ", indent * 2), k, convert(v)))
     end
 
