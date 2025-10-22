@@ -13,6 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5.0.0
       - uses: leafo/gh-actions-lua@v12.0.0
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - run: cargo install selene stylua
       - run: selene lua generate.lua palette.lua
       - run: stylua --check .
