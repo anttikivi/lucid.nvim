@@ -1,5 +1,5 @@
 std = "vim"
-exclude = ["hsluv.lua"]
+exclude = [".lua/", "hsluv.lua"]
 
 [rules]
 multiple_statements = "allow"
