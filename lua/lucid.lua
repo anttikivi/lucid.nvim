@@ -11,9 +11,11 @@ M.config = M.defaults
 ---@class lucid.Colors
 ---@field bg string
 ---@field bg_light string
+---@field bg_hint string
 ---@field fg string
 ---@field fg_light string
 ---@field gray string
+---@field light_gray string
 ---@field red string
 ---@field green string
 ---@field yellow string
@@ -26,12 +28,16 @@ M.colors = {
         bg = "#14161b",
         -- H: 252.8; S: 17.3; L: 14.6
         bg_light = "#22252c",
+        -- H: 254.8; S: 16.1; L: 20.4
+        bg_hint = "#2e313a",
         -- H: 261.6; S: 54.5; L: 94.6
         fg = "#eeeff8",
         -- H: 261.6; S: 54.5; L: 81.2
         fg_light = "#c4c8e7",
         -- H: 192.2; S: 4.2; L: 68.6
         gray = "#a4a8a8",
+        -- H: 192.2; S: 5.1; L: 42.1
+        light_gray = "#616464",
         -- H: 11.4; S: 58.4; L: 67
         red = "#e08c8e",
         -- H: 134.9; S: 50.5; L: 67
@@ -47,12 +53,16 @@ M.colors = {
         bg = "#fbfbfb",
         -- H: 0; S: 0; L: 94
         bg_light = "#eeeeee",
+        -- H: 0; S: 0; L: 83.6
+        bg_hint = "#d8d8d8",
         -- H: 252.8; S: 17.3; L: 7.2
         fg = "#14161b",
         -- H: 252.8; S: 17.3; L: 15.0
         fg_light = "#23262d",
-        -- H: 192.2; S: 8.1; L: 45.4
-        gray = "#676c6c",
+        -- H: 192.2; S: 3.2; L: 45.1
+        gray = "#6b6b6b",
+        -- H: 0.0; S: 0.0; L: 71.1
+        light_gray = "#aeaeae",
         -- H: 11.4; S: 58.4; L: 40
         red = "#a33b3f",
         -- H: 134.9; S: 50.5; L: 40
