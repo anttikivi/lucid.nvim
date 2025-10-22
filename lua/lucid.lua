@@ -53,8 +53,8 @@ M.colors = {
         bg = "#fbfbfb",
         -- H: 0; S: 0; L: 94
         bg_light = "#eeeeee",
-        -- H: 0; S: 0; L: 83.6
-        bg_hint = "#d8d8d8",
+        -- H: 0; S: 0; L: 88.8
+        bg_hint = "#dfdfdf",
         -- H: 252.8; S: 17.3; L: 7.2
         fg = "#14161b",
         -- H: 252.8; S: 17.3; L: 15.0
