@@ -8,71 +8,42 @@ M.defaults = {
 
 M.config = M.defaults
 
----@class lucid.Colors
----@field bg string
----@field bg_light string
----@field bg_hint string
----@field fg string
----@field fg_light string
----@field gray string
----@field light_gray string
----@field red string
----@field green string
----@field yellow string
----@field blue string
-
-M.colors = {
-    ---@type lucid.Colors
+M.palette = {
+    ---@type lucid.Palette
     dark = {
-        -- H: 252.8; S: 17.3; L: 7.2
-        bg = "#14161b",
-        -- H: 252.8; S: 17.3; L: 14.6
-        bg_light = "#22252c",
-        -- H: 254.8; S: 16.1; L: 20.4
-        bg_hint = "#2e313a",
-        -- H: 261.6; S: 54.5; L: 94.6
-        fg = "#eeeff8",
-        -- H: 261.6; S: 54.5; L: 81.2
-        fg_light = "#c4c8e7",
-        -- H: 192.2; S: 4.2; L: 68.6
-        gray = "#a4a8a8",
-        -- H: 192.2; S: 5.1; L: 42.1
-        light_gray = "#616464",
-        -- H: 11.4; S: 58.4; L: 67
-        red = "#e08c8e",
-        -- H: 134.9; S: 50.5; L: 67
-        green = "#72b180",
-        -- H: 55.0; S: 58.9; L: 70.1
-        yellow = "#cca56d",
-        -- H: 237.6; S: 59.2; L: 69.9
-        blue = "#77b1dd",
+        bg = { h = 252.8, s = 17.3, l = 7.2 },
+        bg_light = { h = 252.8, s = 17.3, l = 14.6 },
+        bg_hint = { h = 254.8, s = 16.1, l = 20.4 },
+        fg = { h = 261.6, s = 54.5, l = 94.6 },
+        fg_light = { h = 261.6, s = 54.5, l = 81.2 },
+        gray = { h = 192.2, s = 4.2, l = 68.6 },
+        light_gray = { h = 192.2, s = 5.1, l = 42.1 },
+        red = { h = 11.4, s = 58.4, l = 67 },
+        green = { h = 134.9, s = 50.5, l = 67 },
+        yellow = { h = 55.0, s = 58.9, l = 70.1 },
+        blue = { h = 237.6, s = 59.2, l = 69.9 },
+        magenta = { h = 323.8, s = 78.9, l = 76.4 },
+        cyan = { h = 197.4, s = 59.6, l = 74.7 },
     },
-    ---@type lucid.Colors
+    ---@type lucid.Palette
     light = {
-        -- H: 0; S: 0; L: 98.6
-        bg = "#fbfbfb",
-        -- H: 0; S: 0; L: 94
-        bg_light = "#eeeeee",
-        -- H: 0; S: 0; L: 88.8
-        bg_hint = "#dfdfdf",
-        -- H: 252.8; S: 17.3; L: 7.2
-        fg = "#14161b",
-        -- H: 252.8; S: 17.3; L: 15.0
-        fg_light = "#23262d",
-        -- H: 192.2; S: 3.2; L: 45.1
-        gray = "#6b6b6b",
-        -- H: 0.0; S: 0.0; L: 71.1
-        light_gray = "#aeaeae",
-        -- H: 11.4; S: 58.4; L: 40
-        red = "#a33b3f",
-        -- H: 134.9; S: 50.5; L: 40
-        green = "#406749",
-        -- H: 56.0; S: 58.8; L: 46.6
-        yellow = "#846b45",
-        -- H: 237.8; S: 59.2; L: 40
-        blue = "#40627c",
+        bg = { h = 0, s = 0, l = 98.6 },
+        bg_light = { h = 0, s = 0, l = 94 },
+        bg_hint = { h = 0, s = 0, l = 88.8 },
+        fg = { h = 252.8, s = 17.3, l = 7.2 },
+        fg_light = { h = 252.8, s = 17.3, l = 15.0 },
+        gray = { h = 192.2, s = 3.2, l = 45.1 },
+        light_gray = { h = 0.0, s = 0.0, l = 71.1 },
+        red = { h = 11.4, s = 58.4, l = 40 },
+        green = { h = 134.9, s = 50.5, l = 40 },
+        yellow = { h = 56.0, s = 58.8, l = 46.6 },
+        blue = { h = 237.8, s = 59.2, l = 40 },
+        magenta = { h = 282.0, s = 59.5, l = 39.3 },
+        cyan = { h = 196.9, s = 59.6, l = 40.0 },
     },
 }
+
+M.colors = require("lucid.generated").colors
 
 local did_setup = false
 

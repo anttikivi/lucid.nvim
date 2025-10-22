@@ -1,0 +1,34 @@
+---@class lucid.Color
+---@field h number
+---@field s number
+---@field l number
+
+---@class lucid.Palette
+---@field bg lucid.Color
+---@field bg_light lucid.Color
+---@field bg_hint lucid.Color
+---@field fg lucid.Color
+---@field fg_light lucid.Color
+---@field gray lucid.Color
+---@field light_gray lucid.Color
+---@field red lucid.Color
+---@field green lucid.Color
+---@field yellow lucid.Color
+---@field blue lucid.Color
+---@field magenta lucid.Color
+---@field cyan lucid.Color
+
+---@class lucid.Colors
+---@field bg string
+---@field bg_light string
+---@field bg_hint string
+---@field fg string
+---@field fg_light string
+---@field gray string
+---@field light_gray string
+---@field red string
+---@field green string
+---@field yellow string
+---@field blue string
+---@field magenta string
+---@field cyan string
